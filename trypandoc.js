@@ -8,6 +8,7 @@ function resetParams() {
   params.standalone = false;
   params.citeproc = false;
   params["html-math-method"] = "plain";
+  params["highlight-style"] = "pygments";
   params.files = {};
   params.template = null;
 };
