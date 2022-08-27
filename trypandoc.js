@@ -29,12 +29,77 @@ function isBase64(s) {
   return (s.length > 0 && base64regex.test(s))
 }
 
+
+const extensions =
+  { asciidoc: "adoc",
+    asciidoctor: "adoc",
+    beamer: "tex",
+    biblatex: "bib",
+    bibtex: "bib",
+    commonmark: "md",
+    commonmark_x: "md",
+    context: "ctx",
+    csljson: "json",
+    docbook: "xml",
+    docbook4: "xml",
+    docbook5: "xml",
+    docx: "docx",
+    dokuwiki: "wiki",
+    dzslides: "html",
+    epub: "epub",
+    epub2: "epub",
+    epub3: "epub",
+    fb2: "fb2",
+    gfm: "md",
+    haddock: "hs",
+    html: "html",
+    html4: "html",
+    html5: "html",
+    icml: "icml",
+    ipynb: "ipynb",
+    jats: "xml",
+    jats_archiving: "xml",
+    jats_articleauthoring: "xml",
+    jats_publishing: "xml",
+    jira: "xml",
+    json: "json",
+    latex: "tex",
+    man: "1",
+    markdown: "md",
+    markdown_github: "md",
+    markdown_mmd: "md",
+    markdown_phpextra: "md",
+    markdown_strict: "md",
+    markua: "md",
+    mediawiki: "wiki",
+    ms: "ms",
+    muse: "muse",
+    native: "native",
+    odt: "odt",
+    opendocument: "xml",
+    opml: "opml",
+    org: "org",
+    plain: "txt",
+    pptx: "pptx",
+    revealjs: "html",
+    rst: "rst",
+    rtf: "rtf",
+    s5: "html",
+    slideous: "html",
+    slidy: "html",
+    tei: "xml",
+    texinfo: "texi",
+    textile: "txt",
+    xwiki: "wiki",
+    zimwiki: "wiki"
+  }
+
 function downloadLink(name, contents) {
   let downloadlink = document.createElement("a");
   downloadlink.setAttribute("download", name);
   downloadlink.setAttribute("class", "download-link");
   downloadlink.setAttribute("href", 'data:application/octet-stream;base64,' + contents);
-  downloadlink.textContent = 'click to download ' + name;
+  downloadlink.textContent = 'download ' + name;
   return downloadlink;
 }
 
@@ -139,12 +204,23 @@ function convert() {
     .then(handleErrors)
     .then(response => response.text())
     .then(restext => {
+         let errors = document.getElementById("errors").style.display == "block";
          let binary = binaryFormats[params.to];
-         if (binary &&
-           document.getElementById("errors").style.display == "none") {
-           document.getElementById("results").appendChild(downloadLink("trypandoc." + binary.extension, restext));
+         document.getElementById("downloadresult").replaceChildren();
+         if (binary && !errors) {
+           document.getElementById("downloadresult").replaceChildren(
+              downloadLink("trypandoc." + extensions[params.to], restext));
          } else {
            document.getElementById("results").textContent += restext;
+           if (!errors && params.standalone) {
+             let dlink = document.createElement("a");
+             let name = "trypandoc." + extensions[params.to];
+             dlink.setAttribute("download", name);
+             dlink.setAttribute("class", "download-link");
+             dlink.setAttribute("href", 'data:text/plain;charset=UTF-8,' + encodeURIComponent(restext));
+             dlink.textContent = 'download ' + name;
+             document.getElementById("downloadresult").replaceChildren(dlink);
+           }
          }
     });
 }
@@ -156,7 +232,6 @@ function setFormFromParams() {
     if (isbinary) {
       inputtext.style.display = "none";
       downloadinput.replaceChildren(downloadLink("input." + params.from, params.text));
-      downloadinput.style.display = "block";
     } else {
       inputtext.value = params.text;
       inputtext.style.display = "block";

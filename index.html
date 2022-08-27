@@ -25,14 +25,14 @@
     #text {margin-top: 0; padding-top: 0;}
     button#convert { vertical-align: bottom; }
     pre#command { margin-top: 1em; background-color: transparent; border: none; }
-    a#permalink { margin-top: 6pt; margin-bottom: 6pt; }
     #examples { margin-left: 0; }
     div.file div.title { margin: 0; padding: 0; }
     span.filename { }
     #convert { margin-left: 0; }
     div.file textarea { margin-top: 0; }
     #customtemplate { display: none; }
-    a.download-link { padding: 6pt 0 6pt 0; font-family: sans-serif; }
+    div.links { margin-top: 6pt; margin-bottom: 6pt; }
+    div.links a { padding: 4pt; }
   </style>
 </head>
 <body>
@@ -220,9 +220,10 @@
         <option id="math-webtex" value="webtex">WebTeX</option>
         <option id="math-gladtex" value="gladtex">GladTeX</option>
       </select>
-      <div class="row">
+      <div class="row links">
         <a id="permalink" title="link to this conversion" href="">permalink</a>
-        <a download="params.json" class="download-link" href="" id="params-as-json">download example parameters as JSON</a>
+        <a id="downloadresult"></a>
+        <a download="params.json" class="download-link" href="" id="params-as-json">download example as JSON</a>
       </div>
       <div id="errors"></div>
       <pre id="results"></pre>
