@@ -1,0 +1,1 @@
+{"text":"---\nkeywords:\n- bee\n- ant\n- ladybug\nauthor: E. N. Tymologist\ntitle: Some bugs\n...\n\nThis is a book about bugs.","from":"markdown","to":"html5","standalone":true,"template":"<h1>$title$</h1>\n<p>by $author$</p>\n<p>Keywords: $for(keywords)$$it$$sep$; $endfor$</p>\n<main>\n$body$\n</main>\n"}

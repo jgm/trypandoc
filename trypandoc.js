@@ -127,10 +127,11 @@ function convert() {
       + (params.citeproc ? " --citeproc" : "")
       + mathopts ;
     document.getElementById("command").textContent = commandString;
+    let body = JSON.stringify(params);
     fetch("/cgi-bin/pandoc-server.cgi", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(params)
+      body: body
      })
     .then(handleErrors)
     .then(response => response.text())
@@ -143,6 +144,7 @@ function convert() {
          document.getElementById("results").textContent += restext;
        }
        document.getElementById("permalink").href = permalink();
+       document.getElementById("params-as-json").href = "data:application/json;base64," + btoa(body);
     });
 }
 
@@ -152,8 +154,7 @@ function setFormFromParams() {
     let isbinary = isBase64(params.text);
     if (isbinary) {
       inputtext.style.display = "none";
-      downloadinput.innerHTML = "";
-      downloadinput.appendChild(downloadLink("input." + params.from, params.text));
+      downloadinput.replaceChildren(downloadLink("input." + params.from, params.text));
       downloadinput.style.display = "block";
     } else {
       inputtext.value = params.text;
@@ -217,11 +218,6 @@ function readFile(file, callback) {
     paramsFromURL();
     setFormFromParams();
 
-    const exampleSelect = document.getElementById("examples");
-    for (const k in examples) {
-      exampleSelect.innerHTML += '<option value="' + k + '">' + k + '</option>';
-    }
-
     document.getElementById("convert").onclick = convert;
     document.getElementById("from").onchange = (e) => {
       params.from = e.target.value;
@@ -262,13 +258,17 @@ function readFile(file, callback) {
       params.template = e.target.value;
     }
     document.getElementById("examples").onchange = (e) => {
-      let newparams = examples[e.target.value];
-      resetParams();
-      for (const key in newparams) {
-        params[key] = newparams[key]; // allow defaults
-      };
-      setFormFromParams();
-      convert();
+      let file = e.target.value;
+      fetch("./examples/" + file)
+       .then(response => response.json())
+       .then(newparams => {
+          resetParams();
+          for (const key in newparams) {
+            params[key] = newparams[key]; // allow defaults
+          };
+          setFormFromParams();
+          convert();
+       });
     }
 
     const fileInput = document.getElementById('loadfile');
@@ -289,8 +289,7 @@ function readFile(file, callback) {
             document.getElementById("from").value = params.from;
           }
           inputtext.style.display = "none";
-          downloadinput.innerHTML = "";
-          downloadinput.appendChild(downloadLink(file.name, s));
+          downloadinput.replaceChildren(downloadLink(file.name, s));
           downloadinput.style.display = "block";
         } else {
           inputtext.value = s;

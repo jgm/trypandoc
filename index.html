@@ -25,7 +25,7 @@
     #text {margin-top: 0; padding-top: 0;}
     button#convert { vertical-align: bottom; }
     pre#command { margin-top: 1em; background-color: transparent; border: none; }
-    a#permalink { margin-top: 6pt; margin-bottom: 6pt; display: block; }
+    a#permalink { margin-top: 6pt; margin-bottom: 6pt; }
     #examples { margin-left: 0; }
     div.file div.title { margin: 0; padding: 0; }
     span.filename { }
@@ -42,6 +42,18 @@
       <h1>Try <a href="https://pandoc.org">pandoc</a>!</h1>
       <select id="examples">
         <option value="" disabled selected>Select an example</option>
+        <option value="hello_world.json">Hello world</option>
+        <option value="bibtex_to_csljson.json">BibTeX to CSL JSON</option>
+        <option value="csv_table_to_org.json">CSV table to org</option>
+        <option value="custom_template.json">Custom template</option>
+        <option value="docx_with_equations_to_latex.json">Docx with equations to LaTeX</option>
+        <option value="ipynb_to_rtf.json">Ipynb to RTF</option>
+        <option value="latex_to_docbook_with_mathml.json">LaTeX to DocBook with MathML</option>
+        <option value="latex_with_macros_to_restructured_text.json">LaTeX with macros to reStructuredText</option>
+        <option value="man_page_to_context.json">Man page to ConTeXt</option>
+        <option value="markdown_citations_to_plain_with_csl_style.json">Markdown citations to plain with CSL style</option>
+        <option value="markdown_to_docbook_with_citations.json">Markdown to DocBook with citations</option>
+        <option value="mediawiki_to_docx_with_equations.json">MediaWiki to Docx with equations</option>
       </select>
     </div>
     <div id="command">
@@ -207,8 +219,10 @@
         <option id="math-webtex" value="webtex">WebTeX</option>
         <option id="math-gladtex" value="gladtex">GladTeX</option>
       </select>
-      <br/>
-      <a id="permalink" title="link to this conversion" href="">permalink</a></br/>
+      <div class="row">
+        <a id="permalink" title="link to this conversion" href="">permalink</a>
+        <a download="params.json" class="download-link" href="" id="params-as-json">download example parameters as JSON</a>
+      </div>
       <div id="errors"></div>
       <pre id="results"></pre>
     </div>
@@ -218,7 +232,6 @@
  <p class="version">pandoc version <span id="version"></span></p>
 </footer>
 
-<script src="examples.js?__DATE__"></script>
 <script src="trypandoc.js?__DATE__"></script>
 
 </body>
