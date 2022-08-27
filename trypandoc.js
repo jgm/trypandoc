@@ -70,12 +70,6 @@ function addFile(name, contents, isbase64) {
   filesDiv.appendChild(fileDiv);
 }
 
-function permalink() {
-  let href = window.location.href;
-  const URLparams = new URLSearchParams([["params", JSON.stringify(params)]]);
-  return href.replace(/([?].*)?$/,"?" + URLparams);
-}
-
 const binaryFormats = {
    docx: { extension: "docx",
            mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
@@ -90,6 +84,14 @@ const binaryFormats = {
     epub3: { extension: "epub",
              mime: "application/epub+zip" }
 };
+
+function updateLinks(jsonparams) {
+  let href = window.location.href;
+  const URLparams = new URLSearchParams([["params", jsonparams]]);
+  let permalink = href.replace(/([?].*)?$/,"?" + URLparams);
+  document.getElementById("permalink").href = permalink;
+  document.getElementById("params-as-json").href = "data:application/json;charset=UTF-8," + encodeURIComponent(jsonparams);
+}
 
 function paramsFromURL() {
   if (window.location.search.length > 0) {
@@ -128,6 +130,7 @@ function convert() {
       + mathopts ;
     document.getElementById("command").textContent = commandString;
     let body = JSON.stringify(params);
+    updateLinks(body);
     fetch("/cgi-bin/pandoc-server.cgi", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -139,12 +142,10 @@ function convert() {
          let binary = binaryFormats[params.to];
          if (binary &&
            document.getElementById("errors").style.display == "none") {
-         document.getElementById("results").appendChild(downloadLink("trypandoc." + binary.extension, restext));
-       } else {
-         document.getElementById("results").textContent += restext;
-       }
-       document.getElementById("permalink").href = permalink();
-       document.getElementById("params-as-json").href = "data:application/json;base64," + btoa(body);
+           document.getElementById("results").appendChild(downloadLink("trypandoc." + binary.extension, restext));
+         } else {
+           document.getElementById("results").textContent += restext;
+         }
     });
 }
 
