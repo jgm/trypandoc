@@ -335,7 +335,11 @@ function readFile(file, callback) {
     }
     document.getElementById("examples").onchange = (e) => {
       let file = e.target.value;
-      fetch("./examples/" + file)
+      let headers = new Headers();
+      headers.append('pragma', 'no-cache');
+      headers.append('cache-control', 'no-cache');
+      fetch("./examples/" + file, { method: 'POST',
+                                    headers: headers })
        .then(response => response.json())
        .then(newparams => {
           resetParams();
