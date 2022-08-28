@@ -18,7 +18,6 @@ var params = {};
 function clearText() {
   params.text = '';
   document.getElementById("downloadinput").innerHTML = "";
-  document.getElementById("downloadinput").style.display = "none";
   document.getElementById("text").style.display = "block";
   document.getElementById("text").value = '';
 }
@@ -235,7 +234,7 @@ function setFormFromParams() {
     } else {
       inputtext.value = params.text;
       inputtext.style.display = "block";
-      downloadinput.style.display = "none";
+      downloadinput.innerHTML = "";
     }
     if (params.template) {
       document.getElementById("templatetext").value = params.template;
@@ -370,11 +369,10 @@ function readFile(file, callback) {
           }
           inputtext.style.display = "none";
           downloadinput.replaceChildren(downloadLink(file.name, s));
-          downloadinput.style.display = "block";
         } else {
           inputtext.value = s;
           inputtext.style.display = "block";
-          downloadinput.style.display = "none";
+          downloadinput.innerHTML = "";
         }
       });
     });
