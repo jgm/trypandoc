@@ -201,26 +201,26 @@ function convert() {
     updateLinks(body);
     fetch("/cgi-bin/pandoc-server.cgi", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: {"Content-Type": "application/json",
+                "Accept": "application/json"},
       body: body
      })
     .then(handleErrors)
-    .then(response => response.text())
-    .then(restext => {
+    .then(response => response.json())
+    .then(result => {
          let errors = document.getElementById("errors").style.display == "block";
-         let binary = binaryFormats[params.to];
          document.getElementById("downloadresult").replaceChildren();
-         if (binary && !errors) {
+         if (result.base64 && !errors) {
            document.getElementById("downloadresult").replaceChildren(
-              downloadLink("trypandoc." + extensions[params.to], restext));
+              downloadLink("trypandoc." + extensions[params.to], result.output));
          } else {
-           document.getElementById("results").textContent += restext;
+           document.getElementById("results").textContent += result.output;
            if (!errors && params.standalone) {
              let dlink = document.createElement("a");
              let name = "trypandoc." + extensions[params.to];
              dlink.setAttribute("download", name);
              dlink.setAttribute("class", "download-link");
-             dlink.setAttribute("href", 'data:text/plain;charset=UTF-8,' + encodeURIComponent(restext));
+             dlink.setAttribute("href", 'data:text/plain;charset=UTF-8,' + encodeURIComponent(result.output));
              dlink.textContent = 'download ' + name;
              document.getElementById("downloadresult").replaceChildren(dlink);
            }
