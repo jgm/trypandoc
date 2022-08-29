@@ -179,11 +179,18 @@ function handleErrors(response) {
     return response;
 }
 
+function addMessage(msg) {
+  let msgdiv = document.createElement("div");
+  msgdiv.setAttribute("class", "message " + msg.verbosity);
+  msgdiv.textContent = msg.message;
+  document.getElementById("messages").appendChild(msgdiv);
+}
+
 function convert() {
-    document.getElementById("results").textContent = "";
-    let errs = document.getElementById("errors");
-    errs.style.display = "none";
-    errs.textContent = "";
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("errors").innerHTML = "";
+    document.getElementById("messages").innerHTML = "";
+    document.getElementById("downloadresult").replaceChildren();
     console.log(params);
 
     let mm = params["html-math-method"];
@@ -208,9 +215,15 @@ function convert() {
     .then(handleErrors)
     .then(response => response.json())
     .then(result => {
-         let errors = document.getElementById("errors").style.display == "block";
-         document.getElementById("downloadresult").replaceChildren();
-         if (result.base64 && !errors) {
+       if (result.error) {
+         let errs = document.getElementById("errors");
+         let err = document.createElement("div");
+         err.setAttribute("class", "error");
+         err.textContent = result.error;
+         errs.appendChild(err);
+
+       } else { // success
+         if (result.base64) {
            document.getElementById("downloadresult").replaceChildren(
               downloadLink("trypandoc." + extensions[params.to], result.output));
          } else {
@@ -225,6 +238,9 @@ function convert() {
              document.getElementById("downloadresult").replaceChildren(dlink);
            }
          }
+         result.messages.forEach(addMessage);
+       }
+
     });
 }
 
