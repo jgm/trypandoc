@@ -1,0 +1,26 @@
+body { margin: auto; font-family: sans-serif; font-size: 10pt; color: #555; }
+#command { background-color: #555; color: #eee; border-radius: 9pt; padding: 6pt; font-family: monospace; height: 1em; }
+h1 { margin-bottom: 1em; font-size: 166%; margin: 0; padding: 6pt; }
+h1 a { text-decoration: none; color: inherit; }
+label { font-weight: 600; }
+textarea { height: auto; font-family: monospace; font-size: 10pt; margin-top: 15px; min-height: 45vh; width: 44vw; }
+div.alert { margin: 1em; }
+div#errors { width: 100%; color: red; font-weight: 600; padding-top: 6pt; padding-bottom: 6pt; display: none; }
+pre#results { width: 100%; margin-top: 0; min-height: 65vh; width: 44vw; }
+footer { color: #555; text-align: center; margin: 1em; }
+p.version { color: #555; }
+.container { margin: 12pt; }
+.row { display: flex; flex-wrap: nowrap; justify-content: space-between; margin: 0; padding: 0; }
+#frompane { flex: 1; padding: 3pt; }
+#topane { flex: 1; padding: 3pt; }
+#text {margin-top: 0; padding-top: 0;}
+button#convert { vertical-align: bottom; }
+pre#command { margin-top: 1em; background-color: transparent; border: none; }
+#examples { margin-left: 0; }
+div.file div.title { margin: 0; padding: 0; }
+span.filename { }
+#convert { margin-left: 0; }
+div.file textarea { margin-top: 0; }
+#customtemplate { display: none; }
+div.links { margin-top: 3pt; margin-bottom: 3pt; }
+div.links a { padding: 4pt; }

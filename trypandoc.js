@@ -9,6 +9,7 @@ function resetParams() {
   params["embed-resources"] = false;
   params.citeproc = false;
   params["html-math-method"] = "plain";
+  params.wrap = "auto";
   params["highlight-style"] = "pygments";
   params.files = {};
   params.template = null;
@@ -193,6 +194,7 @@ function convert() {
       + (params["embed-resources"] ? " --embed-resources" : "")
       + (params.template ? " --template=custom.tpl" : "")
       + (params.citeproc ? " --citeproc" : "")
+      + (params.wrap == "auto" ? "" : (" -wrap=" +  params.wrap))
       + mathopts ;
     document.getElementById("command").textContent = commandString;
     let body = JSON.stringify(params);
@@ -253,6 +255,7 @@ function setFormFromParams() {
     document.getElementById("embed-resources").checked = params["embed-resources"];
     document.getElementById("citeproc").checked = params.citeproc;
     document.getElementById("html-math-method").value = params["html-math-method"];
+    document.getElementById("wrap").value = params.wrap;
     const files = document.querySelectorAll(".file");
     files.forEach(file => {
       file.remove();
@@ -325,6 +328,10 @@ function readFile(file, callback) {
     }
     document.getElementById("html-math-method").onchange = (e) => {
       params["html-math-method"] = e.target.value;
+      convert();
+    }
+    document.getElementById("wrap").onchange = (e) => {
+      params.wrap = e.target.value;
       convert();
     }
     document.getElementById("template").onchange = (e) => {
