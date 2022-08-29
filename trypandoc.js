@@ -6,6 +6,7 @@ function resetParams() {
   params.to = 'html5';
   params.from = 'markdown';
   params.standalone = false;
+  params["embed-resources"] = false;
   params.citeproc = false;
   params["html-math-method"] = "plain";
   params["highlight-style"] = "pygments";
@@ -189,6 +190,7 @@ function convert() {
     let commandString = "pandoc"
       + " --from " + params.from + " --to " + params.to
       + (params.standalone ? " --standalone" : "")
+      + (params["embed-resources"] ? " --embed-resources" : "")
       + (params.template ? " --template=custom.tpl" : "")
       + (params.citeproc ? " --citeproc" : "")
       + mathopts ;
@@ -248,6 +250,7 @@ function setFormFromParams() {
     document.getElementById("from").value = params.from;
     document.getElementById("to").value = params.to;
     document.getElementById("standalone").checked = params.standalone;
+    document.getElementById("embed-resources").checked = params["embed-resources"];
     document.getElementById("citeproc").checked = params.citeproc;
     document.getElementById("html-math-method").value = params["html-math-method"];
     const files = document.querySelectorAll(".file");
@@ -310,6 +313,10 @@ function readFile(file, callback) {
     // }
     document.getElementById("standalone").onchange = (e) => {
       params.standalone = e.target.checked;
+      convert();
+    }
+    document.getElementById("embed-resources").onchange = (e) => {
+      params["embed-resources"] = e.target.checked;
       convert();
     }
     document.getElementById("citeproc").onchange = (e) => {
