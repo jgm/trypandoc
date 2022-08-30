@@ -228,7 +228,7 @@ function convert() {
               downloadLink("trypandoc." + extensions[params.to], result.output));
          } else {
            document.getElementById("results").textContent += result.output;
-           if (!errors && params.standalone) {
+           if (params.standalone) {
              let dlink = document.createElement("a");
              let name = "trypandoc." + extensions[params.to];
              dlink.setAttribute("download", name);
