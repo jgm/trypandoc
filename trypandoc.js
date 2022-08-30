@@ -136,21 +136,6 @@ function addFile(name, contents, isbase64) {
   filesDiv.appendChild(fileDiv);
 }
 
-const binaryFormats = {
-   docx: { extension: "docx",
-           mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
-    odt: { extension: "odt",
-           mime: "application/vnd.oasis.opendocument.text" },
-    pptx: { extension: "pptx",
-            mime: "application/vnd.openxmlformats-officedocument.presentationml.presentation" },
-    epub:  { extension: "epub",
-             mime: "application/epub+zip" },
-    epub2: { extension: "epub",
-             mime: "application/epub+zip" },
-    epub3: { extension: "epub",
-             mime: "application/epub+zip" }
-};
-
 function updateLinks(jsonparams) {
   let href = window.location.href;
   const URLparams = new URLSearchParams([["params", jsonparams]]);
