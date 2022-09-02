@@ -10,7 +10,7 @@ function resetParams() {
   params.citeproc = false;
   params["html-math-method"] = "plain";
   params.wrap = "auto";
-  params["highlight-style"] = "pygments";
+  params["highlight-style"] = null;
   params.files = {};
   params.template = null;
 };
@@ -186,7 +186,10 @@ function convert() {
       + (params["embed-resources"] ? " --embed-resources" : "")
       + (params.template ? " --template=custom.tpl" : "")
       + (params.citeproc ? " --citeproc" : "")
-      + (params.wrap == "auto" ? "" : (" -wrap=" +  params.wrap))
+      + (params.wrap == "auto" ? "" : (" --wrap=" +  params.wrap))
+      + (params["highlight-style"] == null ? " --no-highlight" :
+              (params["highlight-style"] == "pygments" ? "" :
+                 " --highlight-style=" +  params["highlight-style"]))
       + mathopts ;
     document.getElementById("command").textContent = commandString;
     let body = JSON.stringify(params);
@@ -257,6 +260,7 @@ function setFormFromParams() {
     document.getElementById("citeproc").checked = params.citeproc;
     document.getElementById("html-math-method").value = params["html-math-method"];
     document.getElementById("wrap").value = params.wrap;
+    document.getElementById("highlight-style").value = params["highlight-style"] || "";
     const files = document.querySelectorAll(".file");
     files.forEach(file => {
       file.remove();
@@ -333,6 +337,14 @@ function readFile(file, callback) {
     }
     document.getElementById("wrap").onchange = (e) => {
       params.wrap = e.target.value;
+      convert();
+    }
+    document.getElementById("highlight-style").onchange = (e) => {
+      if (e.target.value == "") {
+        params["highlight-style"] = null;
+      } else {
+        params["highlight-style"] = e.target.value;
+      }
       convert();
     }
     document.getElementById("template").onchange = (e) => {
