@@ -43,7 +43,7 @@
       <label for="from">
       from
       </label>
-      <select id="from">
+      <select id="from" title="source format">
         <option value="biblatex">biblatex</option>
         <option value="bibtex">bibtex</option>
         <option value="commonmark">commonmark</option>
@@ -115,7 +115,7 @@
       <label for="to">
       to
       </label>
-      <select id="to">
+      <select id="to" title="target format">
         <option value="asciidoc">asciidoc</option>
         <option value="asciidoctor">asciidoctor</option>
         <option value="beamer">beamer</option>
@@ -179,15 +179,15 @@
         <option value="zimwiki">zimwiki</option>
       </select>
       <input type="checkbox" id="standalone" name="standalone">
-      <label for="standalone">Standalone</label>
+      <label for="standalone" title="produce a standalone document rather than a fragment">Standalone</label>
       &nbsp;
       <input type="checkbox" id="embed-resources" name="embed-resources">
-      <label for="embed-resources">Embed resources</label>
+      <label for="embed-resources" title="embed images and other linked resources">Embed resources</label>
       &nbsp;
       <input type="checkbox" id="citeproc" name="citeproc">
-      <label for="citeproc">Citeproc</label>
+      <label for="citeproc" title="process citations">Citeproc</label>
       &nbsp;
-      <select id="html-math-method">
+      <select id="html-math-method" title="how math is rendered">
         <option id="math-plain" value="plain">Plain math</option>
         <option id="math-mathml" value="mathml">MathML</option>
         <option id="math-mathjax" value="mathjax">MathJax</option>
@@ -195,12 +195,12 @@
         <option id="math-webtex" value="webtex">WebTeX</option>
         <option id="math-gladtex" value="gladtex">GladTeX</option>
       </select>
-      <select id="wrap">
+      <select id="wrap" title="text wrapping option">
         <option selected value="auto">Auto wrap</option>
         <option value="none">No wrap</option>
         <option value="preserve">Preserve breaks</option>
       </select>
-      <select id="highlight-style">
+      <select id="highlight-style" title="source code highlighting style">
         <option selected value="">No highlighting</option>
         <option value="pygments">pygments</option>
         <option value="monochrome">monochrome</option>
