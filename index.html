@@ -32,62 +32,61 @@
         <option value="docx_with_equations_to_latex.json">Docx with equations to LaTeX</option>
       </select>
     </div>
-    <div id="command">
-      <pre id="command"></pre>
-    </div>
+    <pre id="command"></pre>
   </div>
   <div class="row">
     <div id="frompane">
-      <button id="convert">Convert</button>
-      &nbsp;
-      <label for="from" title="source format">
-      from
-      <select id="from" title="source format">
-        <option value="biblatex">biblatex</option>
-        <option value="bibtex">bibtex</option>
-        <option value="commonmark">commonmark</option>
-        <option value="commonmark_x">commonmark_x</option>
-        <option value="creole">creole</option>
-        <option value="csljson">csljson</option>
-        <option value="csv">csv</option>
-        <option value="docbook">docbook</option>
-        <option value="docx">docx</option>
-        <option value="dokuwiki">dokuwiki</option>
-        <option value="endnotexml">endnotexml</option>
-        <option value="epub">epub</option>
-        <option value="fb2">fb2</option>
-        <option value="gfm">gfm</option>
-        <option value="haddock">haddock</option>
-        <option value="html">html</option>
-        <option value="ipynb">ipynb</option>
-        <option value="jats">jats</option>
-        <option value="jira">jira</option>
-        <option value="json">json</option>
-        <option value="latex">latex</option>
-        <option value="man">man</option>
-        <option value="markdown">markdown</option>
-        <option value="markdown_github">markdown_github</option>
-        <option value="markdown_mmd">markdown_mmd</option>
-        <option value="markdown_phpextra">markdown_phpextra</option>
-        <option value="markdown_strict">markdown_strict</option>
-        <option value="mediawiki">mediawiki</option>
-        <option value="muse">muse</option>
-        <option value="native">native</option>
-        <option value="odt">odt</option>
-        <option value="opml">opml</option>
-        <option value="org">org</option>
-        <option value="ris">ris</option>
-        <option value="rst">rst</option>
-        <option value="rtf">rtf</option>
-        <option value="t2t">t2t</option>
-        <option value="textile">textile</option>
-        <option value="tikiwiki">tikiwiki</option>
-        <option value="tsv">tsv</option>
-        <option value="twiki">twiki</option>
-        <option value="vimwiki">vimwiki</option>
-      </select>
-      </label>
-      <br/>
+      <div class="controls">
+        <button id="convert">Convert</button>
+        &nbsp;
+        <label for="from" title="source format">
+        from
+        <select id="from" title="source format">
+          <option value="biblatex">biblatex</option>
+          <option value="bibtex">bibtex</option>
+          <option value="commonmark">commonmark</option>
+          <option value="commonmark_x">commonmark_x</option>
+          <option value="creole">creole</option>
+          <option value="csljson">csljson</option>
+          <option value="csv">csv</option>
+          <option value="docbook">docbook</option>
+          <option value="docx">docx</option>
+          <option value="dokuwiki">dokuwiki</option>
+          <option value="endnotexml">endnotexml</option>
+          <option value="epub">epub</option>
+          <option value="fb2">fb2</option>
+          <option value="gfm">gfm</option>
+          <option value="haddock">haddock</option>
+          <option value="html">html</option>
+          <option value="ipynb">ipynb</option>
+          <option value="jats">jats</option>
+          <option value="jira">jira</option>
+          <option value="json">json</option>
+          <option value="latex">latex</option>
+          <option value="man">man</option>
+          <option value="markdown">markdown</option>
+          <option value="markdown_github">markdown_github</option>
+          <option value="markdown_mmd">markdown_mmd</option>
+          <option value="markdown_phpextra">markdown_phpextra</option>
+          <option value="markdown_strict">markdown_strict</option>
+          <option value="mediawiki">mediawiki</option>
+          <option value="muse">muse</option>
+          <option value="native">native</option>
+          <option value="odt">odt</option>
+          <option value="opml">opml</option>
+          <option value="org">org</option>
+          <option value="ris">ris</option>
+          <option value="rst">rst</option>
+          <option value="rtf">rtf</option>
+          <option value="t2t">t2t</option>
+          <option value="textile">textile</option>
+          <option value="tikiwiki">tikiwiki</option>
+          <option value="tsv">tsv</option>
+          <option value="twiki">twiki</option>
+          <option value="vimwiki">vimwiki</option>
+        </select>
+        </label>
+      </div>
       <span>Input</span>
       <button onclick="clearText()">clear</button>
       <input id="loadfile" type="file" />
@@ -114,104 +113,103 @@
       </div>
     </div>
     <div id="topane">
-      <label for="to">
-      to
-      <select id="to" title="target format">
-        <option value="asciidoc">asciidoc</option>
-        <option value="asciidoctor">asciidoctor</option>
-        <option value="beamer">beamer</option>
-        <option value="biblatex">biblatex</option>
-        <option value="bibtex">bibtex</option>
-        <option value="commonmark">commonmark</option>
-        <option value="commonmark_x">commonmark_x</option>
-        <option value="context">context</option>
-        <option value="csljson">csljson</option>
-        <option value="docbook">docbook</option>
-        <option value="docbook4">docbook4</option>
-        <option value="docbook5">docbook5</option>
-        <option value="docx">docx</option>
-        <option value="dokuwiki">dokuwiki</option>
-        <option value="dzslides">dzslides</option>
-        <option value="epub">epub</option>
-        <option value="epub2">epub2</option>
-        <option value="epub3">epub3</option>
-        <option value="fb2">fb2</option>
-        <option value="gfm">gfm</option>
-        <option value="haddock">haddock</option>
-        <option value="html">html</option>
-        <option value="html4">html4</option>
-        <option value="html5">html5</option>
-        <option value="icml">icml</option>
-        <option value="ipynb">ipynb</option>
-        <option value="jats">jats</option>
-        <option value="jats_archiving">jats_archiving</option>
-        <option value="jats_articleauthoring">jats_articleauthoring</option>
-        <option value="jats_publishing">jats_publishing</option>
-        <option value="jira">jira</option>
-        <option value="json">json</option>
-        <option value="latex">latex</option>
-        <option value="man">man</option>
-        <option value="markdown">markdown</option>
-        <option value="markdown_github">markdown_github</option>
-        <option value="markdown_mmd">markdown_mmd</option>
-        <option value="markdown_phpextra">markdown_phpextra</option>
-        <option value="markdown_strict">markdown_strict</option>
-        <option value="markua">markua</option>
-        <option value="mediawiki">mediawiki</option>
-        <option value="ms">ms</option>
-        <option value="muse">muse</option>
-        <option value="native">native</option>
-        <option value="odt">odt</option>
-        <option value="opendocument">opendocument</option>
-        <option value="opml">opml</option>
-        <option value="org">org</option>
-        <option value="plain">plain</option>
-        <option value="pptx">pptx</option>
-        <option value="revealjs">revealjs</option>
-        <option value="rst">rst</option>
-        <option value="rtf">rtf</option>
-        <option value="s5">s5</option>
-        <option value="slideous">slideous</option>
-        <option value="slidy">slidy</option>
-        <option value="tei">tei</option>
-        <option value="texinfo">texinfo</option>
-        <option value="textile">textile</option>
-        <option value="xwiki">xwiki</option>
-        <option value="zimwiki">zimwiki</option>
-      </select>
-      </label>
-      <input type="checkbox" id="standalone" name="standalone"><label for="standalone" title="produce a standalone document rather than a fragment">Standalone</label>
-      &nbsp;
-      <input type="checkbox" id="embed-resources" name="embed-resources"><label for="embed-resources" title="embed images and other linked resources">Embed resources</label>
-      &nbsp;
-      <input type="checkbox" id="citeproc" name="citeproc"><label for="citeproc" title="process citations">Citeproc</label>
-      &nbsp;
-      <input type="checkbox" id="table-of-contents" name="table-of-contents"><label for="table-of-contents" title="add table of contents">TOC</label>
-      &nbsp;
-      <select id="html-math-method" title="how math is rendered">
-        <option id="math-plain" value="plain">Plain math</option>
-        <option id="math-mathml" value="mathml">MathML</option>
-        <option id="math-mathjax" value="mathjax">MathJax</option>
-        <option id="math-katex" value="katex">KaTeX</option>
-        <option id="math-webtex" value="webtex">WebTeX</option>
-        <option id="math-gladtex" value="gladtex">GladTeX</option>
-      </select>
-      <select id="wrap" title="text wrapping option">
-        <option selected value="auto">Auto wrap</option>
-        <option value="none">No wrap</option>
-        <option value="preserve">Preserve breaks</option>
-      </select>
-      <select id="highlight-style" title="source code highlighting style">
-        <option selected value="">No highlighting</option>
-        <option value="pygments">pygments</option>
-        <option value="monochrome">monochrome</option>
-        <option value="kate">kate</option>
-        <option value="breezeDark">breezeDark</option>
-        <option value="espresso">espresso</option>
-        <option value="zenburn">zenburn</option>
-        <option value="haddock">haddock</option>
-        <option value="tango">tango</option>
-      </select>
+      <div class="controls">
+        <label for="to">
+        to
+        <select id="to" title="target format">
+          <option value="asciidoc">asciidoc</option>
+          <option value="asciidoctor">asciidoctor</option>
+          <option value="beamer">beamer</option>
+          <option value="biblatex">biblatex</option>
+          <option value="bibtex">bibtex</option>
+          <option value="commonmark">commonmark</option>
+          <option value="commonmark_x">commonmark_x</option>
+          <option value="context">context</option>
+          <option value="csljson">csljson</option>
+          <option value="docbook">docbook</option>
+          <option value="docbook4">docbook4</option>
+          <option value="docbook5">docbook5</option>
+          <option value="docx">docx</option>
+          <option value="dokuwiki">dokuwiki</option>
+          <option value="dzslides">dzslides</option>
+          <option value="epub">epub</option>
+          <option value="epub2">epub2</option>
+          <option value="epub3">epub3</option>
+          <option value="fb2">fb2</option>
+          <option value="gfm">gfm</option>
+          <option value="haddock">haddock</option>
+          <option value="html">html</option>
+          <option value="html4">html4</option>
+          <option value="html5">html5</option>
+          <option value="icml">icml</option>
+          <option value="ipynb">ipynb</option>
+          <option value="jats">jats</option>
+          <option value="jats_archiving">jats_archiving</option>
+          <option value="jats_articleauthoring">jats_articleauthoring</option>
+          <option value="jats_publishing">jats_publishing</option>
+          <option value="jira">jira</option>
+          <option value="json">json</option>
+          <option value="latex">latex</option>
+          <option value="man">man</option>
+          <option value="markdown">markdown</option>
+          <option value="markdown_github">markdown_github</option>
+          <option value="markdown_mmd">markdown_mmd</option>
+          <option value="markdown_phpextra">markdown_phpextra</option>
+          <option value="markdown_strict">markdown_strict</option>
+          <option value="markua">markua</option>
+          <option value="mediawiki">mediawiki</option>
+          <option value="ms">ms</option>
+          <option value="muse">muse</option>
+          <option value="native">native</option>
+          <option value="odt">odt</option>
+          <option value="opendocument">opendocument</option>
+          <option value="opml">opml</option>
+          <option value="org">org</option>
+          <option value="plain">plain</option>
+          <option value="pptx">pptx</option>
+          <option value="revealjs">revealjs</option>
+          <option value="rst">rst</option>
+          <option value="rtf">rtf</option>
+          <option value="s5">s5</option>
+          <option value="slideous">slideous</option>
+          <option value="slidy">slidy</option>
+          <option value="tei">tei</option>
+          <option value="texinfo">texinfo</option>
+          <option value="textile">textile</option>
+          <option value="xwiki">xwiki</option>
+          <option value="zimwiki">zimwiki</option>
+        </select>
+        </label>
+        <label for="standalone" title="produce a standalone document rather than a fragment"><input type="checkbox" id="standalone" name="standalone">&nbsp;Standalone</label>
+        <label for="embed-resources" title="embed images and other linked resources"><input type="checkbox" id="embed-resources" name="embed-resources">&nbsp;Embed resources</label>
+        <label for="citeproc" title="process citations"><input type="checkbox" id="citeproc" name="citeproc">&nbsp;Citeproc</label>
+        <label for="table-of-contents" title="add table of contents"><input type="checkbox" id="table-of-contents" name="table-of-contents">&nbsp;TOC</label>
+        <label for="number-sections" title="number sections"><input type="checkbox" id="number-sections" name="number-sections">&nbsp;Number&nbsp;sections</label>
+        <select id="html-math-method" title="how math is rendered">
+          <option id="math-plain" value="plain">Plain math</option>
+          <option id="math-mathml" value="mathml">MathML</option>
+          <option id="math-mathjax" value="mathjax">MathJax</option>
+          <option id="math-katex" value="katex">KaTeX</option>
+          <option id="math-webtex" value="webtex">WebTeX</option>
+          <option id="math-gladtex" value="gladtex">GladTeX</option>
+        </select>
+        <select id="wrap" title="text wrapping option">
+          <option selected value="auto">Auto wrap</option>
+          <option value="none">No wrap</option>
+          <option value="preserve">Preserve breaks</option>
+        </select>
+        <select id="highlight-style" title="source code highlighting style">
+          <option selected value="">No highlighting</option>
+          <option value="pygments">pygments</option>
+          <option value="monochrome">monochrome</option>
+          <option value="kate">kate</option>
+          <option value="breezeDark">breezeDark</option>
+          <option value="espresso">espresso</option>
+          <option value="zenburn">zenburn</option>
+          <option value="haddock">haddock</option>
+          <option value="tango">tango</option>
+        </select>
+      </div>
       <div class="row links">
         <a id="permalink" title="link to this conversion" href="">permalink</a>
         <a id="downloadresult"></a>

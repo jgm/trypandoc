@@ -1,5 +1,5 @@
 body { margin: auto; font-family: sans-serif; font-size: 10pt; color: #555; }
-#command { background-color: #555; color: #eee; border-radius: 9pt; padding: 6pt; font-family: monospace; height: 1em; }
+#command { background-color: #555; color: #eee; border-radius: 9pt; padding: 6pt; font-family: monospace; margin-top: 1em 0 0 0; border: none; }
 h1 { margin-bottom: 1em; font-size: 166%; margin: 0; padding: 6pt; }
 h1 a { text-decoration: none; color: inherit; }
 label { font-weight: 600; }
@@ -10,11 +10,11 @@ footer { color: #555; text-align: center; margin: 1em; }
 p.version { color: #555; }
 .container { margin: 12pt; }
 .row { display: flex; flex-wrap: nowrap; justify-content: space-between; margin: 0; padding: 0; }
+.controls {  display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 6pt; }
 #frompane { flex: 1; padding: 3pt; }
 #topane { flex: 1; padding: 3pt; }
 #text {margin-top: 0; padding-top: 0;}
-button#convert { vertical-align: bottom; }
-pre#command { margin-top: 1em; background-color: transparent; border: none; }
+button#convert { vertical-align: bottom; background-color: red; font-weight: bold; color: white; border: none; border-radius: 4px; }
 #examples { margin-left: 0; }
 div.file div.title { margin: 0; padding: 0; }
 span.filename { }
