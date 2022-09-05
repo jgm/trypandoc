@@ -7,6 +7,7 @@ function resetParams() {
   params.from = 'markdown';
   params.standalone = false;
   params["embed-resources"] = false;
+  params["table-of-contents"] = false;
   params.citeproc = false;
   params["html-math-method"] = "plain";
   params.wrap = "auto";
@@ -184,6 +185,7 @@ function convert() {
       + " --from " + params.from + " --to " + params.to
       + (params.standalone ? " --standalone" : "")
       + (params["embed-resources"] ? " --embed-resources" : "")
+      + (params["table-of-contents"] ? " --toc" : "")
       + (params.template ? " --template=custom.tpl" : "")
       + (params.citeproc ? " --citeproc" : "")
       + (params.wrap == "auto" ? "" : (" --wrap=" +  params.wrap))
@@ -257,6 +259,7 @@ function setFormFromParams() {
     document.getElementById("to").value = params.to;
     document.getElementById("standalone").checked = params.standalone;
     document.getElementById("embed-resources").checked = params["embed-resources"];
+    document.getElementById("table-of-contents").checked = params["table-of-contents"];
     document.getElementById("citeproc").checked = params.citeproc;
     document.getElementById("html-math-method").value = params["html-math-method"];
     document.getElementById("wrap").value = params.wrap;
@@ -325,6 +328,10 @@ function readFile(file, callback) {
     }
     document.getElementById("embed-resources").onchange = (e) => {
       params["embed-resources"] = e.target.checked;
+      convert();
+    }
+    document.getElementById("table-of-contents").onchange = (e) => {
+      params["table-of-contents"] = e.target.checked;
       convert();
     }
     document.getElementById("citeproc").onchange = (e) => {

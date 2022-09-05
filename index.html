@@ -40,9 +40,8 @@
     <div id="frompane">
       <button id="convert">Convert</button>
       &nbsp;
-      <label for="from">
+      <label for="from" title="source format">
       from
-      </label>
       <select id="from" title="source format">
         <option value="biblatex">biblatex</option>
         <option value="bibtex">bibtex</option>
@@ -87,6 +86,7 @@
         <option value="twiki">twiki</option>
         <option value="vimwiki">vimwiki</option>
       </select>
+      </label>
       <br/>
       <span>Input</span>
       <button onclick="clearText()">clear</button>
@@ -98,14 +98,16 @@
       <div id="files">
       </div>
       <br/>
-      <label for="addfile">Add support file</label>
+      <label for="addfile">Add support file
       <input id="addfile" type="file" />
+      </label>
       <br/>
-      <label for="template">Template</label>
+      <label for="template">Template
       <select id="template">
         <option selected value="default">Default</option>
         <option value="custom">Custom</option>
       </select>
+      </label>
       <div id="customtemplate">
         <span>custom.tpl</span>
         <textarea id="templatetext"></textarea>
@@ -114,7 +116,6 @@
     <div id="topane">
       <label for="to">
       to
-      </label>
       <select id="to" title="target format">
         <option value="asciidoc">asciidoc</option>
         <option value="asciidoctor">asciidoctor</option>
@@ -178,14 +179,14 @@
         <option value="xwiki">xwiki</option>
         <option value="zimwiki">zimwiki</option>
       </select>
-      <input type="checkbox" id="standalone" name="standalone">
-      <label for="standalone" title="produce a standalone document rather than a fragment">Standalone</label>
+      </label>
+      <input type="checkbox" id="standalone" name="standalone"><label for="standalone" title="produce a standalone document rather than a fragment">Standalone</label>
       &nbsp;
-      <input type="checkbox" id="embed-resources" name="embed-resources">
-      <label for="embed-resources" title="embed images and other linked resources">Embed resources</label>
+      <input type="checkbox" id="embed-resources" name="embed-resources"><label for="embed-resources" title="embed images and other linked resources">Embed resources</label>
       &nbsp;
-      <input type="checkbox" id="citeproc" name="citeproc">
-      <label for="citeproc" title="process citations">Citeproc</label>
+      <input type="checkbox" id="citeproc" name="citeproc"><label for="citeproc" title="process citations">Citeproc</label>
+      &nbsp;
+      <input type="checkbox" id="table-of-contents" name="table-of-contents"><label for="table-of-contents" title="add table of contents">TOC</label>
       &nbsp;
       <select id="html-math-method" title="how math is rendered">
         <option id="math-plain" value="plain">Plain math</option>
