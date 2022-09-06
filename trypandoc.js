@@ -335,6 +335,8 @@ function enableControlIf(ident, enable) {
     document.getElementById("to").onchange = (e) => {
       params.to = e.target.value;
       enableControlIf("number-sections", (params.to.match(/html|slidy|slideous|s5|dzslides|reveal|latex|context|docx|ms|epub/) != null));
+      enableControlIf("html-math-method", (params.to.match(/html|slidy|slideous|s5|dzslides|reveal|docbook|jats|epub/) != null));
+      enableControlIf("highlight-style", (params.to.match(/html|slidy|slideous|s5|dzslides|reveal|docx|latex|ms/) != null));
       convert();
     }
     document.getElementById("text").onchange = (e) => {
