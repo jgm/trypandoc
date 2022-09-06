@@ -15,6 +15,7 @@ p.version { color: #555; }
 #topane { flex: 1; padding: 3pt; }
 #text {margin-top: 0; padding-top: 0;}
 button#convert { vertical-align: bottom; background-color: red; font-weight: bold; color: white; border: none; border-radius: 4px; }
+.disabled { color: #aaa; }
 #examples { margin-left: 0; }
 div.file div.title { margin: 0; padding: 0; }
 span.filename { }

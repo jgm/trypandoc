@@ -267,6 +267,10 @@ function setFormFromParams() {
     document.getElementById("html-math-method").value = params["html-math-method"];
     document.getElementById("wrap").value = params.wrap;
     document.getElementById("highlight-style").value = params["highlight-style"] || "";
+
+    // update disabled status of other buttons that depend on 'to':
+    document.getElementById("to").dispatchEvent(new Event("change"));
+
     const files = document.querySelectorAll(".file");
     files.forEach(file => {
       file.remove();
@@ -305,6 +309,19 @@ function readFile(file, callback) {
     reader.readAsText(file);
 }
 
+function enableControlIf(ident, enable) {
+  let ctrl = document.getElementById(ident);
+  ctrl.disabled = !enable;
+  let par = ctrl.parentElement;
+  if (par.nodeName == "LABEL") {
+    if (enable) {
+      par.classList.remove("disabled");
+    } else {
+      par.classList.add("disabled");
+    }
+  }
+}
+
 (function() {
     resetParams();
     paramsFromURL();
@@ -317,6 +334,7 @@ function readFile(file, callback) {
     }
     document.getElementById("to").onchange = (e) => {
       params.to = e.target.value;
+      enableControlIf("number-sections", (params.to.match(/html|slidy|slideous|s5|dzslides|reveal|latex|context|docx|ms|epub/) != null));
       convert();
     }
     document.getElementById("text").onchange = (e) => {
