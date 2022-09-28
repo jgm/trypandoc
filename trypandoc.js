@@ -447,6 +447,13 @@ function enableControlIf(ident, enable) {
       });
     });
 
+    window.addEventListener('keydown', function handle_keydown(e) {
+      // Submit on Ctrl/Cmd+Enter
+      if (e.key === 'Enter' && (navigator.platform === 'MacIntel' ? e.metaKey : e.ctrlKey)) {
+        convert();
+      }
+    });
+
     fetch("/cgi-bin/pandoc-server.cgi/version")
        .then(handleErrors)
        .then(response => response.text())
