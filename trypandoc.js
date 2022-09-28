@@ -339,7 +339,7 @@ function enableControlIf(ident, enable) {
       enableControlIf("highlight-style", (params.to.match(/html|slidy|slideous|s5|dzslides|reveal|docx|latex|ms/) != null));
       convert();
     }
-    document.getElementById("text").onchange = (e) => {
+    document.getElementById("text").oninput = (e) => {
       params.text = e.target.value;
     }
     // document.getElementById("text").onblur = (e) => {
