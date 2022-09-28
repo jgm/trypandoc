@@ -328,7 +328,7 @@ function enableControlIf(ident, enable) {
     setFormFromParams();
 
     document.getElementById("convert").onclick = convert;
-    document.getElementById("from").onchange = (e) => {
+    document.getElementById("from").oninput = (e) => {
       params.from = e.target.value;
       convert();
     }
