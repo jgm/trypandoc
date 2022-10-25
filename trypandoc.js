@@ -219,7 +219,7 @@ function convert() {
            document.getElementById("downloadresult").replaceChildren(
               downloadLink("trypandoc." + extensions[params.to], result.output));
          } else {
-           document.getElementById("results").textContent += result.output;
+           document.getElementById("results").textContent = result.output;
            if (params.standalone) {
              let dlink = document.createElement("a");
              let name = "trypandoc." + extensions[params.to];
