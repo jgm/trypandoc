@@ -230,6 +230,7 @@ function convert() {
              document.getElementById("downloadresult").replaceChildren(dlink);
            }
          }
+         document.getElementById("messages").innerHTML = '';
          result.messages.forEach(addMessage);
        }
 
