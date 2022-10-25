@@ -173,6 +173,36 @@ function addMessage(msg) {
   document.getElementById("messages").appendChild(msgdiv);
 }
 
+let highlightLanguage = {
+  'docbook': 'xml',
+  'docbook4': 'xml',
+  'docbook5': 'xml',
+  'html5': 'html',
+  'html4': 'html',
+  'latex': 'tex',
+  'context': 'tex',
+  'icml': 'xml',
+  'fb2': 'xml',
+  'beamer': 'tex',
+  'markdown': '',  // md highlighting is bad
+  'gfm': 'markdown',
+  'csljson': 'json',
+  'native': 'haskell',
+  'ipynb': 'json',
+  'jats': 'xml',
+  'jats_archiving': 'xml',
+  'jats_articleauthoring': 'xml',
+  'jats_publishing': 'xml',
+  'revealjs': 'html',
+  'slidy': 'html',
+  'dzslides': 'html',
+  's5': 'html',
+  'slideous': 'html',
+  'opendocument': 'xml',
+  'opml': 'xml',
+  'tei': 'xml'
+}
+
 function convert() {
     document.getElementById("results").innerHTML = "";
     document.getElementById("errors").innerHTML = "";
@@ -219,7 +249,10 @@ function convert() {
            document.getElementById("downloadresult").replaceChildren(
               downloadLink("trypandoc." + extensions[params.to], result.output));
          } else {
-           document.getElementById("results").textContent = result.output;
+           let resultpane = document.getElementById("results");
+           resultpane.textContent = result.output;
+           resultpane.setAttribute("class", "hljs language-" + (highlightLanguage[params.to] || params.to));
+           hljs.highlightElement(resultpane);
            if (params.standalone) {
              let dlink = document.createElement("a");
              let name = "trypandoc." + extensions[params.to];
