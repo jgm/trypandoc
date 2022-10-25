@@ -408,7 +408,6 @@ function enableControlIf(ident, enable) {
             params[key] = newparams[key]; // allow defaults
           };
           setFormFromParams();
-          convert();
        });
     }
 
