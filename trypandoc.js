@@ -39,6 +39,7 @@ const extensions =
     beamer: "tex",
     biblatex: "bib",
     bibtex: "bib",
+    chunkedhtml: "zip",
     commonmark: "md",
     commonmark_x: "md",
     context: "ctx",
