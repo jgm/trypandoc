@@ -94,6 +94,7 @@ const extensions =
     tei: "xml",
     texinfo: "texi",
     textile: "txt",
+    typst: "typ",
     xwiki: "wiki",
     zimwiki: "wiki"
   }
