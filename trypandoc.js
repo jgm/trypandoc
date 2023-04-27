@@ -152,7 +152,8 @@ function paramsFromURL() {
   if (window.location.search.length > 0) {
     const query = new URLSearchParams(window.location.search);
     const rawparams = query.get("params");
-    params = JSON.parse(rawparams);
+    // `rawparams` may be a subset of required params
+    params = {...params, ...JSON.parse(rawparams)};
   }
 }
 
