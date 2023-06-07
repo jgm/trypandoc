@@ -5,14 +5,14 @@ h1 a { text-decoration: none; color: inherit; }
 label { font-weight: 600; }
 textarea { height: auto; font-family: monospace; font-size: 10pt; margin-top: 15px; min-height: 45vh; width: 44vw; }
 div.alert { margin: 1em; }
-pre#results { width: 100%; margin-top: 0; min-height: 65vh; width: 44vw; }
 footer { color: #555; text-align: center; margin: 1em; }
 p.version { color: #555; }
 .container { margin: 12pt; }
-.row { display: flex; flex-wrap: nowrap; justify-content: space-between; margin: 0; padding: 0; }
+.row { display: flex; flex-wrap: nowrap; justify-content: space-between; margin: 0; padding: 0; width: 100%; }
 .controls {  display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 6pt; }
 #frompane { flex: 1; padding: 3pt; }
 #topane { flex: 1; padding: 3pt; }
+#topane pre { margin-top: 0; min-height: 65vh; width: 44vw; max-width: 44vw; overflow: auto; }
 #text {margin-top: 0; padding-top: 0;}
 button#convert { vertical-align: bottom; background-color: red; font-weight: bold; color: white; border: none; border-radius: 4px; }
 .disabled { color: #aaa; }
@@ -24,7 +24,7 @@ div.file textarea { margin-top: 0; }
 #customtemplate { display: none; }
 div.links { margin-top: 3pt; margin-bottom: 3pt; }
 div.links a { padding: 4pt; }
-#errors .error { width: 100%; color: white; background-color: red; font-weight: 600; padding: 2pt; }
+#errors .error { width: 100%; color: white; background-color: red; font-weight: 600; padding: 2pt; width: 44vw; }
 #messages .message { margin-bottom: 6pt; }
 #messages .message.INFO { background-color: green; color: white; font-weight: 600; padding: 2pt; }
 #messages .message.WARNING { background-color: red; color: white; font-weight: 600; padding: 2pt; }
