@@ -275,6 +275,10 @@ function convert() {
 
 function setFormFromParams() {
     let inputtext = document.getElementById("text");
+    // add a newline if not present
+    if (inputtext.length > 0 && !inputtext.endsWith("\n")) {
+      inputtext += "\n";
+    }
     let downloadinput = document.getElementById("downloadinput");
     let isbinary = isBase64(params.text);
     if (isbinary) {
