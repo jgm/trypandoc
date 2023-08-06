@@ -12,7 +12,7 @@ p.version { color: #555; }
 .controls {  display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 6pt; }
 #frompane { flex: 1; padding: 3pt; }
 #topane { flex: 1; padding: 3pt; }
-#topane pre { margin-top: 0; min-height: 65vh; width: 44vw; max-width: 44vw; overflow: auto; }
+#topane pre { margin-top: 0; min-height: 65vh; width: 44vw; max-width: 44vw; overflow: auto; white-space: pre-wrap; }
 #text {margin-top: 0; padding-top: 0;}
 button#convert { vertical-align: bottom; background-color: red; font-weight: bold; color: white; border: none; border-radius: 4px; }
 .disabled { color: #aaa; }
