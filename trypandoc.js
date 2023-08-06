@@ -253,7 +253,12 @@ function convert() {
               downloadLink("trypandoc." + extensions[params.to], result.output));
          } else {
            let resultpane = document.getElementById("results");
-           resultpane.textContent = result.output;
+           if (params.to === "json") {
+             resultpane.textContent = JSON.stringify(JSON.parse(result.output),
+                null, 2);
+           } else {
+             resultpane.textContent = result.output;
+           }
            resultpane.setAttribute("class", "hljs language-" + (highlightLanguage[params.to] || params.to));
            hljs.highlightElement(resultpane);
            if (params.standalone) {
