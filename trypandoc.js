@@ -44,6 +44,7 @@ const extensions =
     commonmark_x: "md",
     context: "ctx",
     csljson: "json",
+    djot: "dj",
     docbook: "xml",
     docbook4: "xml",
     docbook5: "xml",
