@@ -2,4 +2,5 @@ upload:
 	scp trypandoc.js style.css website:pandoc.org/try/
 	scp -r examples website:pandoc.org/try/
 	scp index.html website:pandoc.org/try/index.html.in
+	ssh website 'chmod +x pandoc.org/try'
 	ssh website 'sed -e "s/__DATE__/$$(date -Iseconds)/" pandoc.org/try/index.html.in > pandoc.org/try/index.html'
